@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0b">
+<title>barbearianr</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section id="auth" class="auth hide">
+  <div class="logo"><i>✂</i><h1>BARBEARIA <b>NR</b></h1><p>Barbearia e bar · vendas, estoque e fiado</p></div>
+  <div class="card">
+    <div class="tabs"><button id="tL" class="on" onclick="authTab('L')">Entrar</button><button id="tR" onclick="authTab('R')">Registrar</button></div>
+    <div id="fL">
+      <label>Usuário</label><input id="lu" autocomplete="username" autocapitalize="none">
+      <label>Senha</label><input id="lp" type="password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+      <button class="btn full" onclick="doLogin()">Entrar</button>
+    </div>
+    <div id="fR" class="hide">
+      <label>Nome</label><input id="rn" autocomplete="name">
+      <label>Usuário (para entrar)</label><input id="ru" autocapitalize="none" placeholder="ex: joao_nr">
+      <label>Senha (mín. 8 caracteres)</label><input id="rp" type="password" autocomplete="new-password" onkeydown="if(event.key==='Enter')doReg()">
+      <button class="btn full" onclick="doReg()">Criar conta e painel</button>
+    </div>
+    <div class="err" id="ae"></div>
+  </div>
+  <p class="note"><label style="display:inline;text-transform:none;letter-spacing:0;font-size:12px;text-decoration:underline;cursor:pointer">Restaurar de um backup<input type="file" accept=".json,application/json" class="hide" onchange="importAuth(this)"></label></p>
+  <p class="note">🔒 Cada registro tem seu próprio painel. Só entra em outro painel quem for adicionado pelo dono.</p>
+</section>
+
+<section id="app" class="hide">
+  <header><div class="brand">✂ BARBEARIA <b>NR</b></div><select id="ps" onchange="setPanel(this.value)"></select><button class="btn g s" onclick="logout()">Sair</button></header>
+  <main id="main"></main>
+  <nav id="nav"></nav>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
